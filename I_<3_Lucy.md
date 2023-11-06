@@ -39,10 +39,11 @@ sudo nano /etc/pam.d/common-password Use ^W and look for pam_unix.so add minlen=
 sudo apt-get install bum Use bum to look for bad services. Remove apache, nginx, bind9 (DNS), ssh, or FTP unless otherwise stated in the README. Type sudo bum to start bum.
 
 Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too) sudo nano /etc/login.defs change/add to:
-
+```
 PASS_MAX_DAYS 90
 PASS_MIN_DAYS 7
 PASS_WARN_AGE 14
+```
 sudo nano /etc/pam.d/common-auth Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
 
 sudo visudo Make sure only the default account can sudo.
