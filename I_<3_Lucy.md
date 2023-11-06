@@ -63,4 +63,4 @@ Do you hate the Ubuntu Software Center? Use this terminal command to search inst
 
 Do you love using the command line to install and remove stuff? To install stuff: sudo apt-get install <PACKAGE NAME> To remove stuff: sudo apt-get remove <PACKAGE NAME>
 
-This checklist is courtesy of WCTA in Las Vegas Nevada
+This checklist is courtesy of SWCTA in Las Vegas Nevada
