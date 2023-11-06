@@ -42,11 +42,11 @@ Disable samba (unless readme says otherwise) using sudo service smbd stop and su
 <details open>
   <summary> your wierd </summary>
     <br>
-<code>
+<pre>
   PASS_MAX_DAYS 90
   PASS_MIN_DAYS 7
   PASS_WARN_AGE 14
-</code>
+</pre>
   </details>
 sudo nano /etc/pam.d/common-auth Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
 
