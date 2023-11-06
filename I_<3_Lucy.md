@@ -1,6 +1,6 @@
 Read the README. Get root passwords and authorized users.
 
-Answer forensic questions. If you need to find files use the command ``````````````find /home -name '*' -type f```````````````` You can change “/home” to “/” if you want to search the entire computer.
+Answer forensic questions. If you need to find files use the command ```find /home -name '*' -type f``` You can change “/home” to “/” if you want to search the entire computer.
 
 Manage users. Delete any that aren’t supposed to exist. Undisable the accounts that are supposed to exist. Make sure everyone who should be admin is admin and everyone who is supposed to be standard is standard. Add any that are needed. Make sure to unlock and re-lock. System Settings> Users and Groups > Unlock.
 
