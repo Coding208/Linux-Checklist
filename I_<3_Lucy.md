@@ -9,6 +9,8 @@ Manage users. Delete any that aren’t supposed to exist. Undisable the accounts
 
 Look in the README for “insecure” passwords. Change those users’ passwords.
 
+sudo ufw enable Allow any ports in the README
+
 </details>
 <details open> 
   <summary>  Bad Stuff  </summary>
@@ -35,6 +37,12 @@ Remove non-work related software. Anything that looks like a game should be remo
 Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too)
 
 Purge netcat. Use ```sudo apt-get purge netcat nc netcat-*``` to purge all forms of netcat.
+
+Secure Ports. Follow these steps: sudo ss -ln | grep tcp This lists all open ports Look at the list of open ports and use sudo lsof -i :<Port> to get the program Determine if the port is a backdoor (if it has nc or netcat in the name it is a backdoor) Determine if the program is supposed to be on the computer These ports are safe: 22, 53, 631, 35509
+
+Disable FTP services:
+Bring up a terminal, and type ```service --status-all``` and press Enter
+Type ```sudo apt-get remove pure-ftpd``` and press Enter. Type the password, and press enter. Hit yes, and enter.
 
 </details>
 <details open> 
@@ -70,8 +78,6 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 
 </details>
 
-Secure Ports. Follow these steps: sudo ss -ln | grep tcp This lists all open ports Look at the list of open ports and use sudo lsof -i :<Port> to get the program Determine if the port is a backdoor (if it has nc or netcat in the name it is a backdoor) Determine if the program is supposed to be on the computer These ports are safe: 22, 53, 631, 35509
-
 Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
 
 ```chmod -R 444 /var/log```
@@ -84,12 +90,4 @@ Correct file permissions: Execute the following commands to put correct file per
 
 ```chmod -R 444 /etc/ssh```
 
-sudo ufw enable Allow any ports in the README
-
-Disable FTP services: Bring up a terminal, and type service --status-all and press Enter Type sudo apt-get remove pure-ftpd and press Enter. Type the password, and press enter. Hit yes, and enter.
-
-Do you hate the Ubuntu Software Center? Use this terminal command to search installed packages: sudo apt list --installed | grep <NAME>
-
-Do you love using the command line to install and remove stuff? To install stuff: sudo apt-get install <PACKAGE NAME> To remove stuff: sudo apt-get remove <PACKAGE NAME>
-
-This checklist is courtesy of SWCTA in Las Vegas Nevada
+This checklist is courtesy of WCTA in Las Vegas Nevada
