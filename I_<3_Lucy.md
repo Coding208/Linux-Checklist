@@ -19,13 +19,13 @@ Delete all non-work related files (If specified in readme) use: find / -name '*.
 
 sudo apt-get install bum Use bum to look for bad services. Remove apache, nginx, bind9 (DNS), ssh, or FTP unless otherwise stated in the README. Type sudo bum to start bum.
 
-sysctl -n net.ipv4.tcp_syncookies stops bad cookies.
+```sysctl -n net.ipv4.tcp_syncookies``` stops bad cookies. 
 
-sudo nano /etc/apt/sources.list Check for any bad sources
+```sudo nano /etc/apt/sources.list``` Check for any bad sources
 
-sudo nano /etc/hosts Check for any redirects
+```sudo nano /etc/hosts``` Check for any redirects
 
-sudo crontab -e - check for anything in there, it might be malicious.
+```sudo crontab -e``` - check for anything in there, it might be malicious. 
 
 sudo nano /etc/lightdm/lightdm.conf and add allow-guest=false at the bottom, then do “sudo service lightdm restart” (make sure you aren’t doing any updates when you restart lightdm)
 
