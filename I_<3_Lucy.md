@@ -15,7 +15,8 @@ sudo ufw enable Allow any ports in the README
 <details open> 
   <summary>  Bad Stuff  </summary>
 </br>
-Delete all non-work related files (If specified in readme) use: find / -name '*.<file extension>' -type f -delete Remove .mp3, .mov, .mp4, .avi, .mpg, .mpeg, .flac, .m4a, .flv, .ogg, .gif, .png, .jpg, and .jpeg.
+Delete all non-work related files (If specified in readme) use: ```find / -name '*.<file extension>' -type f -delete```
+  Remove .mp3, .mov, .mp4, .avi, .mpg, .mpeg, .flac, .m4a, .flv, .ogg, .gif, .png, .jpg, and .jpeg.
 
 sudo apt-get install bum Use bum to look for bad services. Remove apache, nginx, bind9 (DNS), ssh, or FTP unless otherwise stated in the README. Type sudo bum to start bum.
 
@@ -27,7 +28,7 @@ sudo apt-get install bum Use bum to look for bad services. Remove apache, nginx,
 
 ```sudo crontab -e``` - check for anything in there, it might be malicious. 
 
-sudo nano /etc/lightdm/lightdm.conf and add allow-guest=false at the bottom, then do “sudo service lightdm restart” (make sure you aren’t doing any updates when you restart lightdm)
+```sudo nano /etc/lightdm/lightdm.conf``` and add ```allow-guest=false``` at the bottom, then do “sudo service lightdm restart”  (make sure you aren’t doing any updates when you restart lightdm)
 
 Remove hacking tools. Open Ubuntu Software center and look at recently installed software for “nmap”, “ophcrack”, or anything else that looks suspicious. If in doubt look up its name.
 
@@ -39,18 +40,17 @@ Disable samba (unless readme says otherwise) using sudo service smbd stop and su
 <details open> 
   <summary>  Update/File editing  </summary>
 </br>
-Go to terminal and sudo apt-get update and then sudo apt-get upgrade and sudo apt-get dist-upgrade Let the apps update while you are doing other stuff.
-
+Go to terminal and ```sudo apt-get update``` and then ```sudo apt-get upgrade``` and ```sudo apt-get dist-upgrade```  Let the apps update while you are doing other stuff.
+  
 System Settings>Software&Updates have it check for recommended updates once a day.
 
 After Updates Complete: sudo restart lightdm This gives points for editing lightdm.conf
 
-sudo nano /etc/ssh/sshd_config and add PermitRootLogin no to the bottom. You might need to stop ssh, edit config, and restart. sudo service ssh restart
+```sudo nano /etc/ssh/sshd_config``` and add ```PermitRootLogin no``` to the bottom. You might need to stop ssh, edit config, and restart. ```sudo service ssh restart```
 
-sudo nano /etc/pam.d/common-password Install sudo apt-get install libpam-cracklib and then add password requisite pam_cracklib.so minlen=10 to the end of the file.
+```sudo nano /etc/pam.d/common-password``` Install ```sudo apt-get install libpam-cracklib``` and then add ```password requisite pam_cracklib.so minlen=10``` to the end of the file. 
 
-sudo nano /etc/pam.d/common-password Use ^W and look for pam_unix.so add minlen=8 to the end of this line
-</details>
+```sudo nano /etc/pam.d/common-password``` Use ^W and look for ```pam_unix.so``` add ```minlen=8``` to the end of this line
 
 <details open>
   <summary> Password Age Config </summary>
