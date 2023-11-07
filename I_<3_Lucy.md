@@ -32,6 +32,9 @@ sudo nano /etc/lightdm/lightdm.conf and add allow-guest=false at the bottom, the
 Remove hacking tools. Open Ubuntu Software center and look at recently installed software for “nmap”, “ophcrack”, or anything else that looks suspicious. If in doubt look up its name.
 
 Remove non-work related software. Anything that looks like a game should be removed. If in doubt look it up. If you find a file called “passwords.txt” make sure to delete it.
+
+Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too)
+
 </details>
 <details open> 
   <summary>  Update/File editing  </summary>
@@ -49,7 +52,6 @@ sudo nano /etc/pam.d/common-password Install sudo apt-get install libpam-crackli
 sudo nano /etc/pam.d/common-password Use ^W and look for pam_unix.so add minlen=8 to the end of this line
 </details>
 
-Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too)
 <details open>
   <summary> Password Age Config </summary>
     <br>
