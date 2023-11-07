@@ -11,6 +11,18 @@ Look in the README for “insecure” passwords. Change those users’ passwords
 
 sudo ufw enable Allow any ports in the README
 
+Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
+
+```chmod -R 444 /var/log```
+
+```chmod 440 /etc/passwd```
+
+```chmod 440 /etc/shadow```
+
+```chmod 440 /etc/group```
+
+```chmod -R 444 /etc/ssh```
+
 </details>
 <details open> 
   <summary>  Bad Stuff  </summary>
@@ -77,17 +89,5 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 ```sudo visudo Make sure only the default account can sudo.```
 
 </details>
-
-Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
-
-```chmod -R 444 /var/log```
-
-```chmod 440 /etc/passwd```
-
-```chmod 440 /etc/shadow```
-
-```chmod 440 /etc/group```
-
-```chmod -R 444 /etc/ssh```
 
 This checklist is courtesy of WCTA in Las Vegas Nevada
