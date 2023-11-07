@@ -36,6 +36,8 @@ Remove non-work related software. Anything that looks like a game should be remo
 
 Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too)
 
+Purge netcat. Use ```sudo apt-get purge netcat nc netcat-*``` to purge all forms of netcat.
+
 </details>
 <details open> 
   <summary>  Update/File editing  </summary>
@@ -54,7 +56,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 ```sudo nano /etc/pam.d/common-password``` Use ^W and look for ```pam_unix.so``` add ```minlen=8``` to the end of this line
 </details>
 <details open>
-  <summary> Password Age Config </summary>
+  <summary> Password Config </summary>
     <br>
   sudo nano /etc/login.defs change/add to:
 <pre>
@@ -62,12 +64,11 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
   PASS_MIN_DAYS 7
   PASS_WARN_AGE 14
 </pre>
-  </details>
-sudo nano /etc/pam.d/common-auth Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
+'''sudo nano /etc/pam.d/common-auth''' Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
+
+</details>
 
 sudo visudo Make sure only the default account can sudo.
-
-Purge netcat. Use sudo apt-get purge netcat nc netcat-* to purge all forms of netcat.
 
 Secure Ports. Follow these steps: sudo ss -ln | grep tcp This lists all open ports Look at the list of open ports and use sudo lsof -i :<Port> to get the program Determine if the port is a backdoor (if it has nc or netcat in the name it is a backdoor) Determine if the program is supposed to be on the computer These ports are safe: 22, 53, 631, 35509
 
