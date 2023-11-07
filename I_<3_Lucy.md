@@ -64,13 +64,14 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 </pre>
 ```sudo nano /etc/pam.d/common-auth``` Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
 
-</details>
+```sudo visudo Make sure only the default account can sudo.```
 
-sudo visudo Make sure only the default account can sudo.
+</details>
 
 Secure Ports. Follow these steps: sudo ss -ln | grep tcp This lists all open ports Look at the list of open ports and use sudo lsof -i :<Port> to get the program Determine if the port is a backdoor (if it has nc or netcat in the name it is a backdoor) Determine if the program is supposed to be on the computer These ports are safe: 22, 53, 631, 35509
 
 Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
+
 ```chmod -R 444 /var/log```
 
 ```chmod 440 /etc/passwd```
