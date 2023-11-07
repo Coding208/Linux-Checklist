@@ -49,10 +49,11 @@ sudo nano /etc/pam.d/common-password Install sudo apt-get install libpam-crackli
 sudo nano /etc/pam.d/common-password Use ^W and look for pam_unix.so add minlen=8 to the end of this line
 </details>
 
-Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too) sudo nano /etc/login.defs change/add to:
+Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too)
 <details open>
   <summary> Password Age Config </summary>
     <br>
+  sudo nano /etc/login.defs change/add to:
 <pre>
   PASS_MAX_DAYS 90
   PASS_MIN_DAYS 7
