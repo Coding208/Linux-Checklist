@@ -51,7 +51,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 ```sudo nano /etc/pam.d/common-password``` Install ```sudo apt-get install libpam-cracklib``` and then add ```password requisite pam_cracklib.so minlen=10``` to the end of the file. 
 
 ```sudo nano /etc/pam.d/common-password``` Use ^W and look for ```pam_unix.so``` add ```minlen=8``` to the end of this line
-
+</details>
 <details open>
   <summary> Password Age Config </summary>
     <br>
