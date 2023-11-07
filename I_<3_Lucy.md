@@ -72,9 +72,13 @@ Secure Ports. Follow these steps: sudo ss -ln | grep tcp This lists all open por
 
 Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
 ```chmod -R 444 /var/log```
+
 ```chmod 440 /etc/passwd```
+
 ```chmod 440 /etc/shadow```
+
 ```chmod 440 /etc/group```
+
 ```chmod -R 444 /etc/ssh```
 
 sudo ufw enable Allow any ports in the README
