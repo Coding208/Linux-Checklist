@@ -1,4 +1,4 @@
-Read the README. Get root passwords and authorized users.
+## Read the README. Get root passwords and authorized users.
 
 Answer forensic questions. If you need to find files use the command ```find /home -name '*' -type f``` You can change “/home” to “/” if you want to search the entire computer.
 
