@@ -9,8 +9,6 @@ Manage users. Delete any that aren’t supposed to exist. Undisable the accounts
 
 Look in the README for “insecure” passwords. Change those users’ passwords.
 
-sudo ufw enable Allow any ports in the README
-
 </details>
 <details open> 
   <summary>  Bad Stuff  </summary>
@@ -72,13 +70,16 @@ sudo visudo Make sure only the default account can sudo.
 
 Secure Ports. Follow these steps: sudo ss -ln | grep tcp This lists all open ports Look at the list of open ports and use sudo lsof -i :<Port> to get the program Determine if the port is a backdoor (if it has nc or netcat in the name it is a backdoor) Determine if the program is supposed to be on the computer These ports are safe: 22, 53, 631, 35509
 
-Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): chmod -R 444 /var/log chmod 440 /etc/passwd chmod 440 /etc/shadow chmod 440 /etc/group chmod -R 444 /etc/ssh
+Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
+```chmod -R 444 /var/log```
+```chmod 440 /etc/passwd```
+```chmod 440 /etc/shadow```
+```chmod 440 /etc/group```
+```chmod -R 444 /etc/ssh```
+
+sudo ufw enable Allow any ports in the README
 
 Disable FTP services: Bring up a terminal, and type service --status-all and press Enter Type sudo apt-get remove pure-ftpd and press Enter. Type the password, and press enter. Hit yes, and enter.
-
-Nmap is prohibited software. (If applicable) to remove: In the terminal, type sudo apt-get remove zenmap or sudo apt-get remove nmap and press Enter. Type the password, hit enter, then say yes and hit enter.
-
-Other malicious software: sudo apt-get remove ophcrack This is a hacking tool. Antivirus: sudo apt-get install clamtk This installs an antivirus.
 
 Do you hate the Ubuntu Software Center? Use this terminal command to search installed packages: sudo apt list --installed | grep <NAME>
 
