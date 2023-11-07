@@ -40,7 +40,7 @@ sudo apt-get install bum Use bum to look for bad services. Remove apache, nginx,
 
 Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too) sudo nano /etc/login.defs change/add to:
 <details open>
-  <summary> your wierd </summary>
+  <summary> Password Age Config </summary>
     <br>
 <pre>
   PASS_MAX_DAYS 90
