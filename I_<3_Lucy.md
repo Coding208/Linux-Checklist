@@ -40,6 +40,7 @@ Disable samba (unless readme says otherwise) using sudo service smbd stop and su
 <details open> 
   <summary>  Update/File editing  </summary>
 </br>
+  
 Go to terminal and ```sudo apt-get update``` and then ```sudo apt-get upgrade``` and ```sudo apt-get dist-upgrade```  Let the apps update while you are doing other stuff.
   
 System Settings>Software&Updates have it check for recommended updates once a day.
