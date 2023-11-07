@@ -100,5 +100,5 @@ Disable Admin on non-admin members
 Enable Admin on Admin members
 Turn of auto sign in on everyone except for yourself
 Change weak password 
- imgay
+
 This checklist is courtesy of WCTA in Las Vegas Nevada
