@@ -2,13 +2,13 @@
   <summary>  Basics  </summary>
   <br>
  Read the README. Get root passwords and authorized users. (BASICS)
-</details>
+
 Answer forensic questions. If you need to find files use the command ```find /home -name '*' -type f``` You can change “/home” to “/” if you want to search the entire computer.
 
 Manage users. Delete any that aren’t supposed to exist. Undisable the accounts that are supposed to exist. Make sure everyone who should be admin is admin and everyone who is supposed to be standard is standard. Add any that are needed. Make sure to unlock and re-lock. System Settings> Users and Groups > Unlock.
 
 Look in the README for “insecure” passwords. Change those users’ passwords.
-
+</details>
 System Settings>Software&Updates have it check for recommended updates once a day.
 
 Delete all non-work related files (If specified in readme) use: find / -name '*.<file extension>' -type f -delete Remove .mp3, .mov, .mp4, .avi, .mpg, .mpeg, .flac, .m4a, .flv, .ogg, .gif, .png, .jpg, and .jpeg.
