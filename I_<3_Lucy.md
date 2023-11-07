@@ -62,6 +62,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
   PASS_MIN_DAYS 7
   PASS_WARN_AGE 14
 </pre>
+
   
 ```sudo nano /etc/pam.d/common-auth``` Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
 
