@@ -1,7 +1,7 @@
 <details open>
-  <summary>  Basics  </summary>
+  <summary>  README Basics  </summary>
   <br>
- Read the README. Get root passwords and authorized users. (BASICS)
+ Read the README. Get root passwords and authorized users. 
 
 Answer forensic questions. If you need to find files use the command ```find /home -name '*' -type f``` You can change “/home” to “/” if you want to search the entire computer.
 
@@ -10,7 +10,9 @@ Manage users. Delete any that aren’t supposed to exist. Undisable the accounts
 Look in the README for “insecure” passwords. Change those users’ passwords.
 </details>
 System Settings>Software&Updates have it check for recommended updates once a day.
-
+<details open> 
+  <summary>  Bad Stuff  </summary>
+</br>
 Delete all non-work related files (If specified in readme) use: find / -name '*.<file extension>' -type f -delete Remove .mp3, .mov, .mp4, .avi, .mpg, .mpeg, .flac, .m4a, .flv, .ogg, .gif, .png, .jpg, and .jpeg.
 
 sudo ufw enable Allow any ports in the README
@@ -28,7 +30,7 @@ sudo nano /etc/lightdm/lightdm.conf and add allow-guest=false at the bottom, the
 Remove hacking tools. Open Ubuntu Software center and look at recently installed software for “nmap”, “ophcrack”, or anything else that looks suspicious. If in doubt look up its name.
 
 Remove non-work related software. Anything that looks like a game should be removed. If in doubt look it up. If you find a file called “passwords.txt” make sure to delete it.
-
+</details>
 Go to terminal and sudo apt-get update and then sudo apt-get upgrade and sudo apt-get dist-upgrade Let the apps update while you are doing other stuff.
 
 After Updates Complete: sudo restart lightdm This gives points for editing lightdm.conf
