@@ -77,6 +77,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 <details open>
   <summary> Password Config </summary>
     <br>
+  
   sudo nano /etc/login.defs change/add to:
 <pre>
   PASS_MAX_DAYS 90
