@@ -93,9 +93,6 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 
 </details>
 
-<details open>
-<summary> SECONDARY! </summary>
-</br>
 
 <details open> 
 <summary>  Users </summary>
@@ -110,6 +107,9 @@ Turn of auto sign in on everyone except for yourself
 Change weak passwords
 </details>
 
+<details open>
+<summary> SECONDARY! </summary>
+</br>
 For more items, look at https://github.com/Forty-Bot/linux-checklist
 
 <details open>
