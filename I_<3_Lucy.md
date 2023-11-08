@@ -1,4 +1,4 @@
-<details open>
+<details closed>
   <summary>  README Basics  </summary>
   <br>
   
@@ -25,7 +25,7 @@ Correct file permissions: Execute the following commands to put correct file per
 ```chmod -R 444 /etc/ssh```
 
 </details>
-<details open> 
+<details closed> 
   <summary>  Bad Stuff  </summary>
 </br>
 Delete all non-work related files (If specified in readme) use: ```find / -name '*.<file extension>' -type f -delete```
@@ -58,7 +58,7 @@ Bring up a terminal, and type ```service --status-all``` and press Enter
 Type ```sudo apt-get remove pure-ftpd``` and press Enter. Type the password, and press enter. Hit yes, and enter.
 
 </details>
-<details open> 
+<details closed> 
   <summary>  Update/File editing  </summary>
 </br>
   
@@ -74,7 +74,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 
 ```sudo nano /etc/pam.d/common-password``` Use ^W and look for ```pam_unix.so``` add ```minlen=8``` to the end of this line
 </details>
-<details open>
+<details closed>
   <summary> Password Config </summary>
     <br>
   
@@ -94,7 +94,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 </details>
 
 
-<details open> 
+<details closed> 
 <summary>  Users </summary>
 </br>
   
@@ -107,37 +107,37 @@ Turn of auto sign in on everyone except for yourself
 Change weak passwords
 </details>
 
-<details open>
+<details closed>
 <summary> SECONDARY! </summary>
 </br>
 For more items, look at https://github.com/Forty-Bot/linux-checklist
 
-<details open>
+<details closed>
 <summary><h2>Remove Unauthorized Users</h2></summary>
 <br>
 <pre>sudo userdel $user</pre>
 Be careful, if you delete a user that is authorized, you can't get points back by re-creating it
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Remove Users from Sudo Group</h2></summary>
 <br>
 <pre>sudo deluser $user $group</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Add Users to Groups According to README</h2></summary>
 <br>
 <pre>sudo usermod -a -G $group $user</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Create New Users According to README</h2></summary>
 <br>
 <pre>sudo adduser $user</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Password Rules</h2></summary>
 Edit /etc/login.defs and add to the bottom:
 <pre>
@@ -147,13 +147,13 @@ PASS_WARN_AGE 14
 </pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Enable UFW</h2></summary>
 <br>
 <pre>sudo ufw enable</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Remove Rogue Services</h2></summary>
 <br>
 <pre>sudo service --status-all</pre>
@@ -161,49 +161,49 @@ PASS_WARN_AGE 14
 </details>
 
 
-<details open>
+<details closed>
 <summary><h2>Enable Automatic Updates (Daily)</h2></summary>
 <br>
 <pre>sudo apt install unattended-upgrades</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Update Systemd</h2></summary>
 <br>
 <pre>sudo apt upgrade systemd</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Update OpenSSH if README requires it</h2></summary>
 <br>
 <pre>sudo apt upgrade openssh</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Look for txt files in home directories</h2></summary>
 <br>
 <pre>sudo find /home -name '*.txt'</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Look for mp3 files in home directories</h2></summary>
 <br>
 <pre>sudo find /home -name '*.mp3'</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Look for image files in home directories</h2></summary>
 <br>
 <pre>sudo find /home -name '*.jpg'; sudo find /home -name '*.jpeg'; sudo find /home -name '*.png'</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Remove hacker stuffs</h2></summary>
 <br>
 <pre>sudo apt purge wireshark* ophcrack* john* deluge* nmap* hydra*</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h2>Disable SSH root login</h2></summary>
 <h3>Edit /etc/ssh/sshd_config</h3>
 <h3>Replace:</h3>
@@ -212,7 +212,7 @@ PASS_WARN_AGE 14
 <pre>PermitRootLogin no</pre>
 </details>
 
-<details open>
+<details closed>
 <summary><h1>Somewhat Useful Snippets:</h1></summary>
 
 <h2>List all files in a directories and its subdirectories:</h2>
