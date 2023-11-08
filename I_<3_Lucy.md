@@ -85,6 +85,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
   PASS_WARN_AGE 14
 </pre>
 
+
 ```sudo visudo``` Make sure only the default account can sudo.
   
 ### Might be bad 
