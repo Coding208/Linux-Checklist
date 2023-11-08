@@ -93,6 +93,10 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 
 </details>
 
+<details open>
+<summary> SECONDARY! </summary>
+</br>
+
 <details open> 
 <summary>  Users </summary>
 </br>
@@ -231,6 +235,7 @@ PASS_WARN_AGE 14
 
 <h2>Enable Cookie Protection:</h2>
 <pre>sudo sysctl -n net.ipv4.tcp_syncookies</pre>
+</details>
 </details>
 
 This checklist is courtesy of WCTA in Las Vegas Nevada
