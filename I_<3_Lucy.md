@@ -97,8 +97,11 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 </br>
   
 Disable Admin on non-admin members
+
 Enable Admin on Admin members
+
 Turn of auto sign in on everyone except for yourself
-Change weak password 
+
+Change weak passwords
 
 This checklist is courtesy of WCTA in Las Vegas Nevada
