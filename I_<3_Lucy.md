@@ -86,6 +86,7 @@ After Updates Complete: sudo restart lightdm This gives points for editing light
 </pre>
 
   
+## Might be bad 
 ```sudo nano /etc/pam.d/common-auth``` Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
 
 ```sudo visudo Make sure only the default account can sudo.```
