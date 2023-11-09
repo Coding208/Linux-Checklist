@@ -1,6 +1,5 @@
 <div id="header" align="center">
-  <img src="https://giphy.com/embed/U93mRRxg9A1QQ" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-dad-pos-U93mRRxg9A1QQ"
-    width="100"/>
+  <img src="https://media.giphy.com/media/U93mRRxg9A1QQ/giphy-downsized-large.gif" width="400" height="200"/>
 </div>
 
 # Linux-Checklist
