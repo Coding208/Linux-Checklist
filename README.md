@@ -1,5 +1,5 @@
 <div id="header" align="center">
-  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
+  <img src="https://www.google.com/urlsa=i&url=https%3A%2F%2Fwww.pling.com%2Fp%2F1423770%2F&psig=AOvVaw0V_XBJaQ7m7JKZmkSac3xx&ust=1699646871215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCNCz6ZLct4IDFQAAAAAdAAAAABAn" width="100"/>
 </div>
 
 # Linux-Checklist
