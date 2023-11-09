@@ -1,126 +1,241 @@
-Install updates (Covered)
-apt-get update && apt-get upgrade && apt-get dist-upgrade
-Automatic updates in GUI (Not covered)
-Firewall (Covered)
-apt-get install ufw && ufw enable
-SSH settings
-Turn off root in sshd_config (Covered)
+<details closed>
+  <summary>  README Basics  </summary>
+  <br>
+  
+ Read the README. Get root passwords and authorized users. 
 
-if grep -qF 'PermitRootLogin' /etc/ssh/sshd_config; then sed -i 's/^.*PermitRootLogin.*$/PermitRootLogin no/' /etc/ssh/sshd_config; else echo 'PermitRootLogin no' >> /etc/ssh/sshd_config; fi
-PermitRootLogin no
-ChallengeResponseAuthentication no
-PasswordAuthentication no
-UsePAM no
-PermitEmptyPasswords no
-Possibly add port 22 to firewall? (i.e. only accept local connections)
+Answer forensic questions. If you need to find files use the command ```find /home -name '*' -type f``` You can change “/home” to “/” if you want to search the entire computer.
 
-sudo ufw allow from 202.54.1.5/29 to any port 22
-No keepalive or unattended sessions
+Manage users. Delete any that aren’t supposed to exist. Undisable the accounts that are supposed to exist. Make sure everyone who should be admin is admin and everyone who is supposed to be standard is standard. Add any that are needed. Make sure to unlock and re-lock. System Settings> Users and Groups > Unlock.
 
-ClientAliveInterval 300
-ClientAliveCountMax 0
-Disable obsolete rsh settings
+Look in the README for “insecure” passwords. Change those users’ passwords.
 
-IgnoreRhosts yes
-Check sshd_config file for correctness before restart:
+sudo ufw enable Allow any ports in the README
 
-sudo sshd -t
-Lock root user (Covered)
-passwd -l root
-Change login chances (Covered)
-sed -i 's/PASS_MAX_DAYS.*$/PASS_MAX_DAYS 90/;s/PASS_MIN_DAYS.*$/PASS_MIN_DAYS 10/;s/PASS_WARN_AGE.*$/PASS_WARN_AGE 7/' /etc/login.defs
-Update PAM settings (Covered)
-echo 'auth required pam_tally2.so deny=5 onerr=fail unlock_time=1800' >> /etc/pam.d/common-auth
-apt-get install libpam-cracklib
-sed -i 's/\(pam_unix\.so.*\)$/\1 remember=5 minlen=8/' /etc/pam.d/common-password
-sed -i 's/\(pam_cracklib\.so.*\)$/\1 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1/' /etc/pam.d/common-password
-Set up auditing (Covered)
-apt-get install auditd && auditctl -e 1
-Check for weird admins
-mawk -F: '$1 == "sudo"' /etc/group
-Check for weird users
-mawk -F: '$3 > 999 && $3 < 65534 {print $1}' /etc/passwd
-Check for empty passwords
-mawk -F: '$2 == ""' /etc/passwd
-Check for non-root UID 0 users
-mawk -F: '$3 == 0 && $1 != "root"' /etc/passwd
-Remove anything samba-related
-apt-get remove .*samba.* .*smb.*
-Find music (probably in admin's Music folder) (Covered)
-find /home/ -type f \( -name "*.mp3" -o -name "*.mp4" \)
-Remove any downloaded "hacking tools" packages (Covered)
-find /home/ -type f \( -name "*.tar.gz" -o -name "*.tgz" -o -name "*.zip" -o -name "*.deb" \)
-Don't blink
-If it doesn't ask for apache2, nginx, etc., you can usually remove it
-Check services
-Install bum for a graphical interface
-apt-get install bum
-Set home directory perm's
-for i in $(mawk -F: '$3 > 999 && $3 < 65534 {print $1}' /etc/passwd); do [ -d /home/${i} ] && chmod -R 750 /home/${i}; done
-Blacklisted programs
-nmap zenmap apache2 nginx lighttpd wireshark tcpdump netcat-traditional nikto ophcrack
-Other things to try (not tested yet)
-Kernel hardening
-# Turn on execshield
-kernel.exec-shield=1
-kernel.randomize_va_space=1
+Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
 
-# IP Spoofing protection
-net.ipv4.conf.all.rp_filter = 1
-net.ipv4.conf.default.rp_filter = 1
+```chmod -R 444 /var/log```
 
-# Ignore ICMP broadcast requests
-net.ipv4.icmp_echo_ignore_broadcasts = 1
+```chmod 440 /etc/passwd```
 
-# Disable source packet routing
-net.ipv4.conf.all.accept_source_route = 0
-net.ipv6.conf.all.accept_source_route = 0
-net.ipv4.conf.default.accept_source_route = 0
-net.ipv6.conf.default.accept_source_route = 0
+```chmod 440 /etc/shadow```
 
-# Ignore send redirects
-net.ipv4.conf.all.send_redirects = 0
-net.ipv4.conf.default.send_redirects = 0
+```chmod 440 /etc/group```
 
-# Block SYN attacks
-net.ipv4.tcp_syncookies = 1
-net.ipv4.tcp_max_syn_backlog = 2048
-net.ipv4.tcp_synack_retries = 2
-net.ipv4.tcp_syn_retries = 5
+```chmod -R 444 /etc/ssh```
 
-# Disable IP packet forwarding
-net.ipv4.ip_forward
+</details>
+<details closed> 
+  <summary>  Bad Stuff  </summary>
+</br>
+Delete all non-work related files (If specified in readme) use: ```find / -name '*.<file extension>' -type f -delete```
+  Remove .mp3, .mov, .mp4, .avi, .mpg, .mpeg, .flac, .m4a, .flv, .ogg, .gif, .png, .jpg, and .jpeg.
 
-# Log Martians
-net.ipv4.conf.all.log_martians = 1
-net.ipv4.icmp_ignore_bogus_error_responses = 1
+sudo apt-get install bum Use bum to look for bad services. Remove apache, nginx, bind9 (DNS), ssh, or FTP unless otherwise stated in the README. Type sudo bum to start bum.
 
-# Ignore ICMP redirects
-net.ipv4.conf.all.accept_redirects = 0
-net.ipv6.conf.all.accept_redirects = 0
-net.ipv4.conf.default.accept_redirects = 0 
-net.ipv6.conf.default.accept_redirects = 0
+```sysctl -n net.ipv4.tcp_syncookies``` stops bad cookies. 
 
-# Ignore Directed pings
-net.ipv4.icmp_echo_ignore_all = 1
-Then run: sudo sysctl -p
+```sudo nano /etc/apt/sources.list``` Check for any bad sources
 
-Prevent IP spoofing in /etc/host.conf
-grep -qF 'multi on' && sed 's/multi/nospoof/' || echo 'nospoof on' >> /etc/host.conf
-Find world-writable files
-find /dir -xdev -type d \( -perm -0002 -a ! -perm -1000 \) -print
-Find no-user files
-find /dir -xdev \( -nouser -o -nogroup \) -print
-Disable USBs
-echo 'install usb-storage /bin/true' >> /etc/modprobe.d/disable-usb-storage.conf
-Disable Firewire/Thunderbolt
-echo "blacklist firewire-core" >> /etc/modprobe.d/firewire.conf
-echo "blacklist thunderbolt" >> /etc/modprobe.d/thunderbolt.conf
-fail2ban
-Blocks IPs with too many login attempts sudo apt-get install fail2ban sudo systemctl restart fail2ban.service
+```sudo nano /etc/hosts``` Check for any redirects
 
-Find rootkits, backdoors, etc.
-sudo apt-get install chkrootkit rkhunter
-sudo chkrootkit
-sudo rkhunter --update
-sudo rkhunter --check
+```sudo crontab -e``` - check for anything in there, it might be malicious. 
+
+```sudo nano /etc/lightdm/lightdm.conf``` and add ```allow-guest=false``` at the bottom, then do “sudo service lightdm restart”  (make sure you aren’t doing any updates when you restart lightdm)
+
+Remove hacking tools. Open Ubuntu Software center and look at recently installed software for “nmap”, “ophcrack”, or anything else that looks suspicious. If in doubt look up its name.
+
+Remove non-work related software. Anything that looks like a game should be removed. If in doubt look it up. If you find a file called “passwords.txt” make sure to delete it.
+
+Disable samba (unless readme says otherwise) using sudo service smbd stop and sudo service samba stop (also uninstall samba too)
+
+Purge netcat. Use ```sudo apt-get purge netcat nc netcat-*``` to purge all forms of netcat.
+
+Secure Ports. Follow these steps: sudo ss -ln | grep tcp This lists all open ports Look at the list of open ports and use sudo lsof -i :<Port> to get the program Determine if the port is a backdoor (if it has nc or netcat in the name it is a backdoor) Determine if the program is supposed to be on the computer These ports are safe: 22, 53, 631, 35509
+
+Disable FTP services:
+Bring up a terminal, and type ```service --status-all``` and press Enter
+Type ```sudo apt-get remove pure-ftpd``` and press Enter. Type the password, and press enter. Hit yes, and enter.
+
+</details>
+<details closed> 
+  <summary>  Update/File editing  </summary>
+</br>
+  
+Go to terminal and ```sudo apt-get update``` and then ```sudo apt-get upgrade``` and ```sudo apt-get dist-upgrade```  Let the apps update while you are doing other stuff.
+  
+System Settings>Software&Updates have it check for recommended updates once a day.
+
+After Updates Complete: sudo restart lightdm This gives points for editing lightdm.conf
+
+```sudo nano /etc/ssh/sshd_config``` and add ```PermitRootLogin no``` to the bottom. You might need to stop ssh, edit config, and restart. ```sudo service ssh restart```
+
+```sudo nano /etc/pam.d/common-password``` Install ```sudo apt-get install libpam-cracklib``` and then add ```password requisite pam_cracklib.so minlen=10``` to the end of the file. 
+
+```sudo nano /etc/pam.d/common-password``` Use ^W and look for ```pam_unix.so``` add ```minlen=8``` to the end of this line
+</details>
+<details closed>
+  <summary> Password Config </summary>
+    <br>
+  
+  sudo nano /etc/login.defs change/add to:
+<pre>
+  PASS_MAX_DAYS 90
+  PASS_MIN_DAYS 7
+  PASS_WARN_AGE 14
+</pre>
+
+
+```sudo visudo``` Make sure only the default account can sudo.
+  
+### Might be bad 
+```sudo nano /etc/pam.d/common-auth``` Use ^W to find pam_tally2.so add deny=5 unlock_time=1800 to the end of the line. This denies password attempts and adds a lockout period.
+
+</details>
+
+
+<details closed> 
+<summary>  Users </summary>
+</br>
+  
+Disable Admin on non-admin members
+
+Enable Admin on Admin members
+
+Turn of auto sign in on everyone except for yourself
+
+Change weak passwords
+</details>
+
+<details closed>
+<summary> SECONDARY! </summary>
+</br>
+For more items, look at https://github.com/Forty-Bot/linux-checklist
+
+<details closed>
+<summary><h2>Remove Unauthorized Users</h2></summary>
+<br>
+<pre>sudo userdel $user</pre>
+Be careful, if you delete a user that is authorized, you can't get points back by re-creating it
+</details>
+
+<details closed>
+<summary><h2>Remove Users from Sudo Group</h2></summary>
+<br>
+<pre>sudo deluser $user $group</pre>
+</details>
+
+<details closed>
+<summary><h2>Add Users to Groups According to README</h2></summary>
+<br>
+<pre>sudo usermod -a -G $group $user</pre>
+</details>
+
+<details closed>
+<summary><h2>Create New Users According to README</h2></summary>
+<br>
+<pre>sudo adduser $user</pre>
+</details>
+
+<details closed>
+<summary><h2>Password Rules</h2></summary>
+Edit /etc/login.defs and add to the bottom:
+<pre>
+PASS_MIN_DAYS 7
+PASS_MAX_DAYS 90
+PASS_WARN_AGE 14
+</pre>
+</details>
+
+<details closed>
+<summary><h2>Enable UFW</h2></summary>
+<br>
+<pre>sudo ufw enable</pre>
+</details>
+
+<details closed>
+<summary><h2>Remove Rogue Services</h2></summary>
+<br>
+<pre>sudo service --status-all</pre>
+<pre>sudo systemctl disable $service</pre>
+</details>
+
+
+<details closed>
+<summary><h2>Enable Automatic Updates (Daily)</h2></summary>
+<br>
+<pre>sudo apt install unattended-upgrades</pre>
+</details>
+
+<details closed>
+<summary><h2>Update Systemd</h2></summary>
+<br>
+<pre>sudo apt upgrade systemd</pre>
+</details>
+
+<details closed>
+<summary><h2>Update OpenSSH if README requires it</h2></summary>
+<br>
+<pre>sudo apt upgrade openssh</pre>
+</details>
+
+<details closed>
+<summary><h2>Look for txt files in home directories</h2></summary>
+<br>
+<pre>sudo find /home -name '*.txt'</pre>
+</details>
+
+<details closed>
+<summary><h2>Look for mp3 files in home directories</h2></summary>
+<br>
+<pre>sudo find /home -name '*.mp3'</pre>
+</details>
+
+<details closed>
+<summary><h2>Look for image files in home directories</h2></summary>
+<br>
+<pre>sudo find /home -name '*.jpg'; sudo find /home -name '*.jpeg'; sudo find /home -name '*.png'</pre>
+</details>
+
+<details closed>
+<summary><h2>Remove hacker stuffs</h2></summary>
+<br>
+<pre>sudo apt purge wireshark* ophcrack* john* deluge* nmap* hydra*</pre>
+</details>
+
+<details closed>
+<summary><h2>Disable SSH root login</h2></summary>
+<h3>Edit /etc/ssh/sshd_config</h3>
+<h3>Replace:</h3>
+<pre>PermitRootLogin yes</pre>
+<h3>With:</h3>
+<pre>PermitRootLogin no</pre>
+</details>
+
+<details closed>
+<summary><h1>Somewhat Useful Snippets:</h1></summary>
+
+<h2>List all files in a directories and its subdirectories:</h2>
+<pre>sudo ls -Ra *</pre>
+
+<h2>Check for blank passwords:</h2>
+<pre>sudo passwd -S $user | grep NP</pre>
+
+<h2>List non-system users:</h2>
+<pre>awk -F: '($3>=1000)&&($3<60000)&&($1!="nobody"){print $1}' /etc/passwd</pre>
+
+<h2>Check Ports:</h2>
+<pre>sudo ss -ln</pre>
+
+<h2>Close a Port:</h2>
+<pre>sudo lsof -i :$port</pre>
+
+<h2>Find Where a Program is Located:</h2>
+<pre>whereis $program</pre>
+
+<h2>Enable Cookie Protection:</h2>
+<pre>sudo sysctl -n net.ipv4.tcp_syncookies</pre>
+</details>
+</details>
+
+This checklist is courtesy of WCTA in Las Vegas Nevada
