@@ -248,4 +248,4 @@ PASS_WARN_AGE 14
 </details>
 </details>
 
-This checklist is courtesy of WCTA in Las Vegas Nevada
+This checklist is courtesy of WCTA & Lucy & me in Las Vegas Nevada
