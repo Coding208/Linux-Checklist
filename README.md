@@ -24,7 +24,7 @@ sudo ufw enable Allow any ports in the README
 
 Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
 
-      **Research what each one of these chmod commands does, they have gotten me points but one of them has tanked my image twice, so unless you want to fail, do these last and research.**
+  __Research what each one of these chmod commands does, they have gotten me points but one of them has tanked my image twice, so unless you want to fail, do these last and research.__
 
 ```chmod -R 444 /var/log```  
 
