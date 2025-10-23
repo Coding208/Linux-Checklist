@@ -23,9 +23,8 @@ Look in the README for “insecure” passwords. Change those users’ passwords
 sudo ufw enable Allow any ports in the README
 
 Correct file permissions: Execute the following commands to put correct file permissions on important system files (with sudo): 
-<span style="color: red;">
-      Research what each one of these chmod commands does, they have gotten me points but one of them has tanked my image twice, so unless you want to fail, do these last and research.
-    </span>
+
+      **Research what each one of these chmod commands does, they have gotten me points but one of them has tanked my image twice, so unless you want to fail, do these last and research.**
 
 ```chmod -R 444 /var/log```  
 
